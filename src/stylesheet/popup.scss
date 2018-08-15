@@ -1,0 +1,338 @@
+@mixin flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin text-overflow-show {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+$dashed: 1px dashed #ccc;
+$orange-color: #f07235;
+.window-edit {
+  width: 240px;
+  background: #fff;
+  .color-wrapper {
+    padding: 10px 20px;
+    border-bottom: $dashed;
+    .color-title {
+      text-align: left;
+      padding: 5px 0;
+      font-size: 14px;
+      @include flex-space-between;
+      span {
+        flex: auto;
+      }
+      i.icon-circle-plus {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #c9c9c9;
+        border: 1px solid #c9c9c9;
+        font-style: normal;
+        &:hover {
+          background: #f07235;
+          border-color: #f07235;
+          color: #fff;
+        }
+      }
+      img {
+        width: 16px;
+        height: 16px;
+        display: none;
+      }
+    }
+    .color-list {
+      ul {
+        width: 100%;
+        list-style: none;
+        li {
+          cursor: pointer;
+        }
+        .color-bar {
+          padding: 5px 0;
+          @include flex-space-between;
+          label.radio-button {
+            position: relative;
+            display: inline-flex;
+            flex: 1;
+            margin: 5px 0;
+            cursor: pointer;
+            input.radio-button_orig-readio {
+              position: absolute;
+              opacity: 0;
+              &:checked+span.radio-button_inner {
+                i.el-icon-check {
+                  line-height: 30px;
+                  opacity: 1;
+                  color: #fff;
+                  font-weight: bolder;
+                }
+              }
+            }
+            span.color-bar-item {
+              flex-grow: 0;
+              flex-shrink: 0;
+              flex-basis: 180px;
+              height: 30px;
+              display: inline-block;
+              border-radius: 15px;
+              color: #fff;
+              padding: 0 10px;
+              line-height: 24px;
+              font-size: 12px;
+              font-weight: bold;
+              z-index: 5;
+              transition: flex-basis .3s;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              &.active {
+                flex-basis: 128px;
+              }
+              i.el-icon-check {
+                line-height: 30px;
+                opacity: 0;
+                transition: opacity .3s;
+                font-weight: bold;
+              }
+            }
+          }
+          .edit-operate {
+            flex: 0 0 50px;
+            white-space: nowrap;
+            transform: translateX(-70px);
+            z-index: 1;
+            transition: all .5s;
+            &.show {
+              transform: translateX(0);
+            }
+          }
+          .el-icon-delete {
+            margin-left: 10px;
+            &:hover {
+              color: $orange-color;
+            }
+          }
+          .el-icon-edit {
+            margin-left: 5px;
+            cursor: pointer;
+            &:hover {
+              color: $orange-color;
+            }
+          }
+        } 
+      }
+      .el-input {
+        margin-top: 10px;
+        .el-input__inner {
+          height: 30px;
+        }
+      }
+      .radio-group {
+        padding: 15px 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        label.radio-button {
+          position: relative;
+          display: inline-flex;
+          flex: 1;
+          margin: 5px;
+          cursor: pointer;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:nth-child(4) {
+            margin-right: 0;
+          }
+          &:nth-child(5) {
+            margin-left: 0;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+          input.radio-button_orig-readio {
+            position: absolute;
+            opacity: 0;
+            &:checked+span.radio-button_inner {
+              i.el-icon-check {
+                line-height: 30px;
+                opacity: 1;
+                color: #fff;
+                font-weight: bolder;
+              }
+            }
+          }
+          span.radio-button_inner {
+            width: 42px;
+            height: 30px;
+            text-align: center;
+            border-radius: 5px;
+            i.el-icon-check {
+              line-height: 30px;
+              opacity: 0;
+              transition: opacity .3s;
+            }
+          }
+        }
+      }
+      span.tag-repeat-tip {
+        display: block;
+        font-size: 12px;
+        color: rgb(245, 43, 31);
+      }
+    }
+  }
+  .icon-edit-wrapper {
+    padding: 15px 0 10px 0 ;
+    border-bottom: $dashed;
+    .icon-title {
+      padding: 0 20px 15px 20px;
+      @include flex-space-between;
+      span {
+        font-size: 14px;
+        flex: auto;
+      }
+      i.icon-circle-plus {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 16px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #c9c9c9;
+        border: 1px solid #c9c9c9;
+        font-style: normal;
+        &:hover {
+          background: #f07235;
+          border-color: #f07235;
+          color: #fff;
+        }
+      }
+      .el-icon-arrow-down {
+        cursor: pointer;
+      }
+    }
+    .existed-icon-wrapper {
+      .radio-button {
+        position: relative;
+        display: block;
+        cursor: pointer;
+        input.radio-button_orig-readio {
+          position: absolute;
+          opacity: 0;
+          &:checked+div.radio-button_inner {
+            span {
+              color: $orange-color;
+            }
+          }
+        }
+      }
+      .existed-icon-list {
+        padding: 0 15px;
+        transition: background-color .3s;
+        cursor: pointer;
+        @include flex-space-between;
+        &:hover {
+          background: #f0733531;
+          .el-icon-edit {
+            opacity: 1;
+          }
+          .el-icon-delete {
+            opacity: 1;
+          }
+        }
+        svg {
+          margin: 5px 5px 5px 0;
+        }
+        span {
+          flex: auto;
+          font-size: 12px;
+          cursor: pointer;
+        }
+        .el-icon-edit {
+          margin-right: 5px;
+          color: #f07235;
+          font-weight: bold;
+          opacity: 0;
+        }
+        .el-icon-delete {
+          color: #f07235;
+          font-weight: bold;
+          opacity: 0;
+        }
+      }
+    }
+    .edit-icon-content {
+      padding: 0 20px;
+      .el-input {
+        margin: 10px 0;
+        .el-input__inner {
+          height: 30px;
+        }
+      }
+      .edit-icon-list {
+        .svg-box {
+          padding: 10px 0;
+          display: flex;
+          justify-content: space-between;
+          label.radio-button {
+            position: relative;
+            cursor: pointer;
+            input.radio-button_orig-readio {
+              position: absolute;
+              opacity: 0;
+            }
+            svg.radio-button_inner {
+              transition: background-color .3s;
+            }
+          }
+          svg {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .window-edit-footer {
+    padding: 10px 20px;
+    cursor: pointer;
+    @include flex-space-between;
+    img {
+      width: 20px;
+    }
+  }
+  .submit-btn-group {
+    text-align: right;
+    button{
+      padding: 7px 6px;
+      &.orangeBtn {
+        background: #f07235;
+        margin-left: 10px;
+        &.el-button:focus, &.el-button:hover {
+          background: #f3631a;
+          span {
+            color: #fff;
+          }
+        }
+        span {
+          color: #fff;
+        }
+      }
+    }
+    .el-button:focus, .el-button:hover {
+      span {
+        color: #f07235;
+      }
+      border-color: #f07235;
+      background: #f0733525;
+    }
+  }
+}

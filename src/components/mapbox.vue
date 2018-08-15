@@ -5,17 +5,21 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import mapboxgl from 'mapbox-gl'
-import markers from '../../markers.js'
+import markers from '../../data/markers.js'
+import MySvg from './svg'
+import popup from './popup'
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiaWRjamFqYSIsImEiOiJjamt0M3FmdHIwMjJiM3BybjN5M25mZnpqIn0.RKN8x07ZmYzwxCj3_AmU0g';
+
 export default {
   name: 'mapbox',
-  data () {
-    return {
-      
-    }
+  components: {
+    MySvg
   },
   mounted () {
+    var _this = this;
     var map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v9',
@@ -82,10 +86,9 @@ export default {
             "circle-stroke-color": "#fff"
         }
     });
-    map.on('click', function(e) {
+    map.on('click', (e) => {
 			var cluster = map.queryRenderedFeatures(e.point, { layers: ["clusters"] });
 			if (cluster[0]) {
-        console.log(markers)
       	var pointsInCluster = markers.features.filter(function(f){
         	var pointPixels = map.project(f.geometry.coordinates)
           var pixelDistance = Math.sqrt(
@@ -95,8 +98,24 @@ export default {
         return Math.abs(pixelDistance) <= clusterRadius;
         });
         console.log(cluster,pointsInCluster);
+        new mapboxgl.Popup ({closeOnClick:true})
+          .setLngLat(pointsInCluster[0].geometry.coordinates)
+          .setHTML(
+             `
+              <div id="popup"></div>
+             `
+            )
+          .addTo(map)
+
+        new Vue({
+          el: '#popup',
+          components: { popup },
+          store: _this.$store,
+          template: `
+            <popup></popup>
+          `
+        })
       }
-      
 		})
     // markers.forEach(marker => {
     //   let el = document.createElement('div');
@@ -125,6 +144,11 @@ export default {
     //     .addTo(map);
     // })
     })
+  },
+  methods: {
+    test () {
+      alert("!")
+    }
   }
 }
 </script>
