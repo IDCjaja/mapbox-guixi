@@ -16,21 +16,19 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    exitedTags: [],
+    existedTags: [],
     existedCategories: [],
     chooseTags: [],
     chooseCategories: []
   },
   mutations: {
     setTagList(state, data) {
-      state.exitedTags = data.existedTags;
+      state.existedTags = data.existedTags;
       state.chooseTags = data.chooseTags;
-      console.log(state.existedTags)
     },
     setCategoryList(state, data) {
       state.existedCategories = data.existedCategories;
       state.chooseCategories = data.chooseCategories;
-      console.log(state.existedCategories)
     }
   },
   actions: {

@@ -302,7 +302,7 @@ $orange-color: #f07235;
     }
   }
   .window-edit-footer {
-    padding: 10px 20px;
+    padding: 10px 0 0 0;
     cursor: pointer;
     @include flex-space-between;
     img {

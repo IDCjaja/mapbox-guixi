@@ -7,7 +7,7 @@
       </div>
       <div class="color-list">
         <ul>
-          <li v-for="(tag,index) in exitedTags" :key="index">
+          <li v-for="(tag,index) in existedTags" :key="index">
             <div class="color-bar">
               <label class="radio-button">
                 <input
@@ -72,8 +72,8 @@ export default {
     return this.$store.dispatch('getTagList')
   },
   computed: {
-    exitedTags() {
-      return this.$store.state.exitedTags
+    existedTags() {
+      return this.$store.state.existedTags
     },
     chooseTags() {
       return this.$store.state.chooseTags

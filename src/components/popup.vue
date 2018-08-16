@@ -2,6 +2,10 @@
   <div class="window-edit">
     <tag-edit-window></tag-edit-window>
     <category-edit-window></category-edit-window>
+    <div class="window-edit-footer" @click="openInformation">
+      <span>桂溪</span>
+      <img src="http://p1ctmsz1g.bkt.clouddn.com/more.png" />
+    </div>
   </div>
 </template>
 
@@ -14,7 +18,9 @@ export default {
     categoryEditWindow
   },
   methods: {
-    
+    openInformation () {
+      alert("!")
+    }
   }
 }
 </script>

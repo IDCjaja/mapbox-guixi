@@ -10,7 +10,9 @@ var tags = {
     {id:8,color:'#e72b5d'}
   ],
   "existedTags": [
-    {id:1,name: '默认', color: '#a0a0a0', number: '2',defaultColor: true},
+    {id:1,name: '默认', color: '#a0a0a0'},
+    {id:2,name: '待审查', color:'#73b724'},
+    {id:8,name: '不合格',color:'#e72b5d'}
   ]
 }
 
