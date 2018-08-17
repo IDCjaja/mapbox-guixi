@@ -1,6 +1,7 @@
 @import './map.scss';
 @import './marker.scss';
 @import './popup.scss';
+@import './filter.scss';
 
 * {
   padding: 0;
@@ -11,4 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+.display {
+  display: block;
+}
+.hidden {
+  display: none;
 }

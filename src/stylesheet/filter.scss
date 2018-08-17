@@ -1,0 +1,129 @@
+.filter-wrapper {
+  width: 78px;
+  height: 35px;
+  position: absolute;
+  right: 20px;
+  top: 82px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  transition: all .3s;
+  overflow: hidden;
+  &.filterShow {
+    width: 275px;
+    max-width: 300px;
+    height: auto;
+    max-height: 580px;
+    overflow: auto;
+  }
+  .filter-icon {
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &.hidden {
+      display: none;
+    }
+    .filter-icon-info {
+      width: 16px;
+      height: 16px;
+      padding-right: 10px;
+    }
+  }
+  .filter-content {
+    padding: 10px 0 5px 0;
+    .filter-body {
+      padding: 10px 20px;
+      &:first-child {
+        ul {
+          border-bottom: 1px solid #e2e2e2;
+          padding-bottom: 10px;
+        }
+      }
+      .filter-select {
+        text-align: left;
+        .filter-select-title {
+          width: 56px;
+          font-size: 14px;
+        }
+        .el-select {
+          margin-left: 10px;
+          .el-select__tags {
+            .el-tag--info {
+              max-width: 90px;
+              @include text-overflow-show;
+            }
+          }
+          .el-input {
+            width: 192px;
+            &.is-focus {
+              border-color: $orange-color;;
+              input.el-input__inner {
+                border-color: $orange-color;;
+                &:focus {
+                  border-color: $orange-color;;
+                }
+              }
+            }
+          }
+        }
+        .el-input__inner:focus {
+          border-color: $orange-color;
+        }
+      }
+    }
+    .filter-list-wrapper {
+      padding: 10px 0 0 0;
+      display: flex;
+      ul {
+        flex: 50%;
+        list-style: none;
+        padding-left: 0;
+        text-align: left;
+        font-size: 14px;
+        li {
+          height: 46px;
+          display: flex;
+          align-items: center;
+          span.filter-category-icon {
+            width: 20px;
+            padding: 0 8px 0 3px;
+          }
+          .filter-color-block {
+            width: 10px;
+            height: 10px;
+            margin: 0 12px 0 9px;
+            border-radius: 50%;
+          }
+          .filter-tag-title {
+            min-width: 56px;
+            margin: 0 10px;
+            flex: auto;
+            display: inline-block;
+          }
+          .filter-tag-color {
+            .filter-color-badge {
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+            }
+          }
+          span:nth-child(3) {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+    .filter-footer {
+      padding: 10px 20px;
+      text-align: left;
+      border-top: 1px solid #dcdfe6;
+      .filter-footer-title {
+        width: 56px;
+      }
+    }
+  }
+}
