@@ -97,7 +97,7 @@ $orange-color: #f07235;
               justify-content: space-between;
               align-items: center;
               &.active {
-                flex-basis: 128px;
+                flex-basis: 150px;
               }
               i.el-icon-check {
                 line-height: 30px;
@@ -290,6 +290,12 @@ $orange-color: #f07235;
             cursor: pointer;
             input.radio-button_orig-readio {
               opacity: 0;
+              &:checked+svg.radio-button_inner {
+                use {
+                  fill: #f07235;
+                  stroke: #f07235;
+                }
+              }
             }
             svg.radio-button_inner {
               transition: background-color .3s;
@@ -300,7 +306,7 @@ $orange-color: #f07235;
     }
   }
   .window-edit-footer {
-    padding: 10px 0 0 0;
+    padding: 10px 20px 0 20px;
     cursor: pointer;
     @include flex-space-between;
     img {
