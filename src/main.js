@@ -52,7 +52,6 @@ const store = new Vuex.Store({
     },
     resetCurrentMarker(state, obj) {
       state.currentMarker = obj;
-      debugger
       state.currentMarkerId = obj.id;
       console.log(state.currentMarkerId)
     },
