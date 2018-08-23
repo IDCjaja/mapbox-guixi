@@ -58,7 +58,7 @@ export default {
       selectShow: false,
       existedCategories: categories.existedCategories,
       existedTags: tags.existedTags,
-      categorySvgMap: ['','monument','embassy','city','town-hall','commercial'],
+      categorySvgMap: ['','monument','embassy','city','town-hall','shop'],
       selectCategoryListArr: [],
       selectTagListArr: [],
       categorySelected: [],
@@ -72,7 +72,6 @@ export default {
       return this.$store.state.markerList
     },
     clustererOpenShow () {
-      console.log(this.$store.state.clustererOpenShow)
       return this.$store.state.clustererOpenShow
     },
     categoryList() {
@@ -98,9 +97,11 @@ export default {
   methods: {
     initMap() {
       var _this = this;
-      this.map = L.mapbox.map('map')
+      this.map = L.mapbox.map('map', 'mapbox.streets',{
+        zoomControl: false,
+        attributionControl: false
+      })
         .setView([30.602836,104.0723], 15)
-        .addLayer(L.mapbox.tileLayer('mapbox.streets'));
       var map = this.map;
       map.on('click',() => {
         this.messageBoxShow = false;

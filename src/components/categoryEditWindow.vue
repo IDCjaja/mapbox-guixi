@@ -98,11 +98,12 @@ export default {
   },
   methods: {
     addOpen() {
+      this.flag = 'add';
+      this.newCategoryName = '';
       this.categoryChoosedId = -1;
       this.editCategoryShow = true;
     },
     addClose () {
-      this.newCategoryName = '';
       this.editCategoryShow = false
     },
     categoryRepeatConfirm(id,index) {
@@ -114,8 +115,6 @@ export default {
         }
       })
       this.categoryChoosedId = id;
-      this.strokeSvgShow = [true,true,true,true,true,true];
-      this.$set(this.strokeSvgShow, index, false)
     },
     addCategory() {
       if(this.newCategoryName !== ""){
@@ -140,7 +139,6 @@ export default {
             }
           })
         }
-        // this.$emit('toggleCategoryInitMap');
         this.editCategoryShow = false
       } else {
         this.$message({

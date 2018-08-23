@@ -62,10 +62,9 @@ export default {
     },
     handleClick(tab,event) {
       this.activeName = tab.index.toString();
-      this.$store.dispatch('toggleResetCurrentMarker',this.markerClusterList[tab.index].options.id);
+      this.$store.dispatch('toggleResetCurrentMarker',this.markerClusterList[tab.index].options);
       this.$store.dispatch('getSelectedCategoryId',this.markerClusterList[tab.index].options.categoryId);
       this.$store.dispatch('getSelectedTagId',this.markerClusterList[tab.index].options.tagId);
-      console.log(this.currentMarkerId)
     },
   }
 }

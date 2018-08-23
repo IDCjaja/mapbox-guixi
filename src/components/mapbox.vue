@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div id="map"></div>
+    <header-nav></header-nav>
     <div class="search-wrapper">
       <el-input
         class="search-input"
@@ -40,6 +41,7 @@ import filterCategory from './filterCategory'
 import filterTag from './filterTag'
 import searchDropDown from './searchDropDown'
 import information from './information'
+import headerNav from './nav'
 
 L.mapbox.accessToken = 'pk.eyJ1IjoiaWRjamFqYSIsImEiOiJjamt0M3FmdHIwMjJiM3BybjN5M25mZnpqIn0.RKN8x07ZmYzwxCj3_AmU0g';
 
@@ -54,7 +56,7 @@ export default {
       filterShow: false,
       existedCategories: categories.existedCategories,
       existedTags: tags.existedTags,
-      categorySvgMap: ['','monument','embassy','city','town-hall','commercial']
+      categorySvgMap: ['','monument','embassy','city','town-hall','shop']
     }
   },
   computed: {
@@ -65,7 +67,6 @@ export default {
       return this.$store.state.currentMarkerId
     },
     informationShow() {
-      console.log(this.$store.state.informationShow)
       return this.$store.state.informationShow
     }
   },
@@ -81,6 +82,8 @@ export default {
             var category = _this.existedCategories.find(catgy => current_marker.categoryId === catgy.iconId );
             var tag = _this.existedTags.find(t => current_marker.tagId === t.id)
             marker.setIcon(L.mapbox.marker.icon({'marker-symbol': _this.categorySvgMap[category.iconId-1], 'marker-color': tag.color}))
+            marker.options.categoryId = category.id;
+            marker.options.color = tag.color;
           }
         })
       },
@@ -93,7 +96,8 @@ export default {
     filterCategory,
     filterTag,
     searchDropDown,
-    information
+    information,
+    headerNav
   },
   mounted () {
     this.initMap()
@@ -101,9 +105,11 @@ export default {
   methods: {
     initMap() {
       var _this = this;
-      this.map = L.mapbox.map('map')
-        .setView([30.602836,104.0723], 15)
-        .addLayer(L.mapbox.tileLayer('mapbox.streets'));
+      this.map = L.mapbox.map('map','mapbox.streets', {
+        zoomControl: false,
+        attributionControl: false
+      })
+        .setView([30.602836,104.0723], 15);
       var map = this.map;
       var southWest = L.latLng(30.533126,103.978188),
           northEast = L.latLng(30.625936,104.106075),
@@ -139,16 +145,16 @@ export default {
           components: { popup },
           store: _this.$store,
           template: `
-            <popup></popup>
+            <popup style="width: 241px"></popup>
           `
         });
         marker.bindPopup(vm.$el);
-        marker.on('click', function(){
+        marker.on('click', function(e){
           _this.$store.dispatch('toggleResetCurrentMarkerId',item.id);
           _this.$store.commit('setSelectedCategoryId',item.categoryId);
           _this.$store.commit('setSelectedTagId', item.tagId);
           var markersInCluster  = []
-          _this.$store.dispatch('toggleSetMarkerClusterList',markersInCluster)
+          _this.$store.dispatch('toggleSetMarkerClusterList',markersInCluster);
         })
         markers.addLayer(marker);
       });
@@ -162,14 +168,14 @@ export default {
           components: { popup },
           store: _this.$store,
           template: `
-            <popup></popup>
+            <popup style="width: 430px"></popup>
           `
         });
         _this.$store.dispatch('toggleResetCurrentMarkerId',markersInCluster[0].options.id)
         _this.$store.commit('setSelectedCategoryId',markersInCluster[0].options.categoryId);
         _this.$store.commit('setSelectedTagId', markersInCluster[0].options.tagId);
         new L.popup()
-          .setLatLng(markersInCluster[0]._latlng)
+          .setLatLng(e.latlng)
           .setContent(vm.$el).openOn(map);
         _this.$store.dispatch('toggleSetMarkerClusterList',markersInCluster)
       })

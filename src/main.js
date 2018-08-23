@@ -51,7 +51,10 @@ const store = new Vuex.Store({
       state.currentMarkerId = id
     },
     resetCurrentMarker(state, obj) {
-      state.currentMarker = obj
+      state.currentMarker = obj;
+      debugger
+      state.currentMarkerId = obj.id;
+      console.log(state.currentMarkerId)
     },
     changeTag(state,tagId) {
       // 提交选择的tag的id，更改marker的tag
