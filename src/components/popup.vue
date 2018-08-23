@@ -65,9 +65,6 @@ export default {
       this.$store.dispatch('toggleResetCurrentMarker',this.markerClusterList[tab.index].options.id);
       this.$store.dispatch('getSelectedCategoryId',this.markerClusterList[tab.index].options.categoryId);
       this.$store.dispatch('getSelectedTagId',this.markerClusterList[tab.index].options.tagId);
-      this.currentMarkerTagId = this.markerClusterList[tab.index].options.tagId
-      this.currentMarkerCategoryId = this.markerClusterList[tab.index].options.categoryId;
-      this.currentMarkerName = this.markerClusterList[tab.index].options.name;
       console.log(this.currentMarkerId)
     },
   }

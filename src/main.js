@@ -7,6 +7,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './stylesheet/index.scss'
+import './mobileComponents/style/index.scss'
 import marker_data from '../data/markers.js'
 import tags from '../data/tags.js'
 import categories from '../data/categories.js'
@@ -27,8 +28,11 @@ const store = new Vuex.Store({
     searchResultList: [],
     markerClusterList: [],
     informationShow: false,
+    clustererOpenShow: false,
     currentMarkerId: Number,
+    currentMarker: Object,
     selectedCategoryId: Number,
+    messageBoxShow: false,
     selectedTagId: Number
   },
   mutations: {
@@ -43,8 +47,11 @@ const store = new Vuex.Store({
     setSearchResult(state,data) {
       state.searchResultList = data
     },
-    resetCurrentMarker(state,id) {
+    resetCurrentMarkerId(state,id) {
       state.currentMarkerId = id
+    },
+    resetCurrentMarker(state, obj) {
+      state.currentMarker = obj
     },
     changeTag(state,tagId) {
       // 提交选择的tag的id，更改marker的tag
@@ -52,7 +59,6 @@ const store = new Vuex.Store({
         return marker.id === state.currentMarkerId;
       })
       current_marker.tagId = tagId;
-      console.log(current_marker)
     },
     changeCategory(state,categoryId) {
       state.markerList.forEach(marker => {
@@ -78,11 +84,13 @@ const store = new Vuex.Store({
       state.markerClusterList = list
     },
     openInformation(state) {
-      console.log("!")
       state.informationShow = true
     },
     closeInformation(state) {
       state.informationShow = false
+    },
+    clustererListOpen(state, bol){
+      state.clustererOpenShow = bol;
     }
   },
   actions: {
@@ -101,8 +109,11 @@ const store = new Vuex.Store({
         context.commit('setSearchResult',search_data)
       }, 500);
     },
-    toggleResetCurrentMarker(context,id) {
-      context.commit('resetCurrentMarker', id)
+    toggleResetCurrentMarkerId(context,id) {
+      context.commit('resetCurrentMarkerId', id)
+    },
+    toggleResetCurrentMarker(context,obj) {
+      context.commit('resetCurrentMarker', obj)
     },
     getChangeTag(context,tagId) {
       context.commit('changeTag',tagId)
@@ -127,6 +138,9 @@ const store = new Vuex.Store({
     },
     toggleCloseInformation(context) {
       context.commit('closeInformation')
+    },
+    toggleClustererListOpen(context,bol){
+      context.commit('clustererListOpen',bol)
     }
   }
 })

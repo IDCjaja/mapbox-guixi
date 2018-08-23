@@ -1,0 +1,130 @@
+.mobile-filter-content {
+  width: 41px;
+  height: 41px;
+  position: absolute;
+  bottom: 102px;
+  right: 20px;
+  transition: all .5s;
+  &.filterCollapse {
+    width: 200px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    background: #fff;
+    overflow: auto;
+    border-radius: 5px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-icon-collapse {
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    @include flex-center;
+    &.hidden {
+      display: none;
+    }
+    img {
+      width: 17px;
+      height: 17px;
+    }
+  }
+  .mobile-filter-detail {
+    width: 200px;
+    background: #fff;
+    padding-top: 15px;
+    .select-wrapper {
+      width: 100%;
+      max-height: 285px;
+      overflow: auto;
+    }
+    .filter-body {
+      padding: 0 25px;
+      &:first-child {
+        ul {
+          padding-bottom: 10px;
+        }
+      }
+      .filter-select {
+        text-align: left;
+        .filter-select-title {
+          width: 56px;
+          font-size: 14px;
+        }
+        .el-input {
+          margin-left: 10px;
+          width: 106px;
+          &.is-focus {
+            border-color: $color-orange;
+            input.el-input__inner {
+              border-color: $color-orange;
+              &:focus {
+                border-color: $color-orange;
+              }
+            }
+          }
+          .el-input__inner {
+            color: $font-color-main;
+            padding: 0 20px 0 10px;
+            @include text-overflow-show;
+          }
+        }
+        .el-input__inner:focus {
+          border-color: $color-orange;
+        }
+      }
+    }
+    .filter-list-wrapper {
+      padding: 10px 0 0 0;
+      display: flex;
+      ul {
+        flex: 50%;
+        list-style: none;
+        padding-left: 0;
+        text-align: left;
+        font-size: 14px;
+        li {
+          height: 46px;
+          display: flex;
+          align-items: center;
+          span.filter-category-icon {
+            width: 20px;
+            padding: 0 8px 0 3px;
+          }
+          .filter-color-block {
+            width: 9px;
+            height: 9px;
+            margin: 0 12px 0 9px;
+            border-radius: 50%;
+          }
+          .filter-tag-title {
+            width: 60px;
+            margin: 0 10px;
+            display: inline-block;
+            font-size: 12px;
+            color: #aaaaaa;
+          }
+          .filter-tag-color {
+            .filter-color-badge {
+              width: 4px;
+              height: 4px;
+              border-radius: 50%;
+            }
+          }
+          span:nth-child(3) {
+            margin-right: 16px;
+          }
+        }
+      }
+    }
+    .mobile-footer {
+      text-align: left;
+      border-top: 1px solid #e0e0e0;
+      span {
+        display: block;
+        font-size: 14px;
+        padding: 10px 25px;
+      }
+    }
+  }
+}

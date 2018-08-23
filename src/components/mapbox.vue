@@ -144,7 +144,7 @@ export default {
         });
         marker.bindPopup(vm.$el);
         marker.on('click', function(){
-          _this.$store.dispatch('toggleResetCurrentMarker',item.id);
+          _this.$store.dispatch('toggleResetCurrentMarkerId',item.id);
           _this.$store.commit('setSelectedCategoryId',item.categoryId);
           _this.$store.commit('setSelectedTagId', item.tagId);
           var markersInCluster  = []
@@ -165,7 +165,7 @@ export default {
             <popup></popup>
           `
         });
-        _this.$store.dispatch('toggleResetCurrentMarker',markersInCluster[0].options.id)
+        _this.$store.dispatch('toggleResetCurrentMarkerId',markersInCluster[0].options.id)
         _this.$store.commit('setSelectedCategoryId',markersInCluster[0].options.categoryId);
         _this.$store.commit('setSelectedTagId', markersInCluster[0].options.tagId);
         new L.popup()

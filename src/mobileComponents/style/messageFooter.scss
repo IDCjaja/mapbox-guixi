@@ -1,0 +1,122 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin text-overflow-show {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+$font-color-main: #1b1b1b;
+$color-orange: #f07235;
+
+.message-footer {
+  width: 96%;
+  position: absolute;
+  bottom: 8px;
+  margin: 0 2%;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  .message-toggle {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    line-height: 45px;
+    border: 1px solid #e7e7e9;
+    span {
+      font-size: 16px;
+    }
+    a {
+      font-size: 14px;
+      color: #f07235;
+    }
+  }
+  .message-body {
+    padding: 12px 0;
+    @include flex-center;
+    .message-content {
+      flex: 0 0 91%;
+      padding: 5px 0;
+      @include text-overflow-show;
+      .title {
+        font-size: 15px;
+        text-align: left;
+        padding-left: 15px;
+        line-height: 1;
+        margin-bottom: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .address {
+        font-size: 12px;
+        color: #ababab;
+        text-align: left;
+        padding-left: 15px;
+        line-height: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+    .message-more {
+      display: flex;
+      padding-right: 15px;
+      white-space: nowrap;
+      span {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      a {
+        display: block;
+        font-size: 12px;
+        color: $color-orange;
+        padding-right: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.marker-list {
+  width: 96%;
+  max-height: 320px;
+  overflow: auto;
+  margin: 0 2%;
+  position: absolute;
+  bottom: 8px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  .list-title {
+    height: 44px;
+    font-size: 16px;
+    color: #222;
+    a {
+      padding-right: 15px;
+      font-size: 14px;
+      color: #f07235;
+    }
+  }
+  li {
+    height: 70px;
+    border-bottom: 1px solid #e7e7e9;
+    @include flex-center;
+    &:last-child {
+      border-bottom-color: transparent;
+    }
+  }
+  span {
+    text-align: left;
+    padding: 0 15px;
+    flex: auto;
+    @include text-overflow-show;
+    small {
+      display: block;
+      margin-top: 10px;
+      @include text-overflow-show;
+    }
+  }
+  i.el-icon-arrow-right {
+    padding-right: 15px;
+  }
+}

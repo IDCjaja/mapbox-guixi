@@ -1,0 +1,94 @@
+$color-orange: #f07235;
+
+.select-container {
+  background: #f4f4f4;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  .select-content {
+    background: #fff;
+    padding-top: 19px; 
+    margin: 10px 2% 0 2%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    .select-title {
+      text-align: left;
+      border-left: 5px solid $color-orange;
+      padding-left: 9px;
+      font-size: 14px;
+      line-height: 1;
+    }
+    .select-body {
+      width: 100%;
+      padding: 10px 0;
+      .el-checkbox-group {
+        .el-checkbox {
+          width: 100%;
+          display: flex;
+          margin-left: 0;
+          align-items: center;
+          padding: 8px 15px;
+          line-height: 30px;
+          .el-checkbox__input {
+            &.is-checked .el-checkbox__inner {
+              background-color: $color-orange;
+              border-color: $color-orange;
+            }
+            &.is-focus .el-checkbox__inner {
+              border-color: $color-orange;
+            }
+          }
+          .el-checkbox__label {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: #222222;
+            .prefix-span {
+              width: 20px;
+              height: 20px;
+              line-height: 20px;
+              display: inline-block;
+              .color-block {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+                border-radius: 50%;
+                background: green;
+              }
+            }
+            .select-name {
+              text-align: left;
+              flex: auto;
+              padding-left: 10px;
+              color: #222222;
+            }
+            .select-number {
+              width: 80px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer-btn-group {
+    width: 94%;
+    height: 60px;
+    padding: 0 3%;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    line-height: 60px;
+    .el-button {
+      padding: 14px 18%;
+      &.orange-btn {
+        background: $color-orange;
+        border-color: $color-orange;
+        span {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
