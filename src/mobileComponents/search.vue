@@ -13,7 +13,7 @@
     </div>
     <div class="result-content">
       <div class="result-list" v-if="resultShow">
-        <div class="result-item" v-for="(item,index) in searchResultList" :key="index" v-on:click="changeCenter(item.id,item.longitude,item.latitude)">
+        <div class="result-item" v-for="(item,index) in searchResultList" :key="index" v-on:click="changeCenter(item)">
           <span class="el-icon-search"></span>
           <div class="item-content">
             <label>{{ item.name }}<small>{{ item.address }}</small></label>
@@ -196,22 +196,9 @@ export default {
     }
   },
   methods: {
-    changeCenter(id,longitude,latitude) {
-      var currentMarker;
-      this.searchResultList.forEach(item => {
-        if(item.id == id){
-          currentMarker = item
-        }
-      })
-      this.$router.push({
-        name:'adminMobile',
-        params: {
-          messageFooterShow: true,
-          centerLongitude: longitude,
-          centerLatitude: latitude,
-          currentMarker: currentMarker
-        }
-      })
+    changeCenter(item) {
+      this.$store.dispatch('toggleResetCurrentMarker',item);
+      this.$emit('listen-search');
     },
     back() {
       this.$emit('listen-search')

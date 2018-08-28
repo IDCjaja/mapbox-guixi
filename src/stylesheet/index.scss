@@ -11,6 +11,9 @@
   padding: 0;
   margin: 0;
 }
+.mapbox-logo {
+  display: none !important;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,4 +25,33 @@
 }
 .hidden {
   display: none;
+}
+ol {
+  padding: 0 15px;
+}
+.el-select-dropdown.is-multiple.el-popper {
+  .el-select-dropdown__item {
+    padding: 0;
+    @include text-overflow-show;
+    span {
+      padding-left: 20px;
+    }
+    &.selected {
+      color: $orange-color;
+      &.hover {
+        background-color: rgba(255, 166, 0, 0.24);
+        color: $orange-color;;
+      }
+      span {
+        color: $orange-color;
+      }
+    }
+    &.hover {
+      background: rgba(255, 166, 0, 0.24);
+      color: $orange-color;;
+      .multiple-color-option {
+        opacity: 1;
+      }
+    }
+  }
 }

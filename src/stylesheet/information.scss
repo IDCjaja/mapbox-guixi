@@ -7,7 +7,8 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   height: auto;
-  max-height: 75%;
+  //max-height: 75%;
+  max-height: 720px;
   .information-title {
     font-size: 24px;
     background: #f07235;
@@ -25,7 +26,8 @@
     }
   }
   .information-list {
-    max-height: 85%;
+    //max-height: 85%;
+    max-height: 662px;
     overflow: auto;
     ul {
       list-style: none;

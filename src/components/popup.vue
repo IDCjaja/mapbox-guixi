@@ -4,7 +4,7 @@
     <tag-edit-window :radio-name="radioName"></tag-edit-window>
     <category-edit-window :radio-name="radioName"></category-edit-window>
     <div class="window-edit-footer" @click="openInformation">
-      <span>桂溪</span>
+      <span>{{ currentMarkerName }}</span>
       <img src="http://p1ctmsz1g.bkt.clouddn.com/more.png" />
     </div>
   </div>
@@ -25,7 +25,7 @@
         <tag-edit-window :radio-name="item.options.name"></tag-edit-window>
         <category-edit-window :radio-name="item.options.name"></category-edit-window>
         <div class="window-edit-footer" @click="openInformation">
-          <span>桂溪</span>
+          <span>{{ currentMarkerName }}</span>
           <img src="http://p1ctmsz1g.bkt.clouddn.com/more.png" />
         </div>
       </div>
@@ -47,6 +47,9 @@ export default {
   computed: {
     currentMarkerId() {
       return this.$store.state.currentMarkerId
+    },
+    currentMarkerName() {
+      return this.$store.state.currentMarkerName
     },
     markerClusterList() {
       return this.$store.state.markerClusterList

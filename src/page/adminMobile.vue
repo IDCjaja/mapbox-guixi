@@ -68,6 +68,9 @@ export default {
     }
   },
   computed: {
+    currentMarker() {
+      return this.$store.state.currentMarker
+    },
     markerList() {
       return this.$store.state.markerList
     },
@@ -128,7 +131,6 @@ export default {
         });
         marker.on('click', function(){
           var markersInCluster  = []
-          _this.$store.dispatch('toggleResetCurrentMarkerId',item.id);
           _this.$store.dispatch('toggleSetMarkerClusterList',markersInCluster);
           _this.$store.dispatch('toggleResetCurrentMarker',item);
           _this.messageBoxShow = true;
@@ -138,7 +140,6 @@ export default {
       map.addLayer(markers);
       markers.on('clusterclick', function(e){
         var markersInCluster = e.layer.getAllChildMarkers();
-        _this.$store.dispatch('toggleResetCurrentMarkerId',markersInCluster[0].options.id);
         _this.$store.dispatch('toggleSetMarkerClusterList',markersInCluster);
         _this.$store.dispatch('toggleResetCurrentMarker',markersInCluster[0].options);
         _this.messageBoxShow = true;
@@ -155,7 +156,8 @@ export default {
       this.searchShow = true
     },
     searchClose() {
-      this.searchShow = false
+      this.searchShow = false;
+      this.map.setView([this.currentMarker.latitude, this.currentMarker.longitude], 20)
     },
     filterOpen() {
       this.filterCollapse = true;

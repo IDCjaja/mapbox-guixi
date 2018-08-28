@@ -17,7 +17,6 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Vuex)
 
-var testList = {id: 24,longitude: 104.062087,latitude: 30.609955,name: '四川省城市车辆置业有限责任公司',tagId: 1,categoryId: 1,address: '四川省成都市武侯区石羊场街道火车南站西路865号四川省城市车辆置业有限责任公司'}
 const store = new Vuex.Store({
   state: {
     markerList: marker_data,
@@ -30,6 +29,7 @@ const store = new Vuex.Store({
     informationShow: false,
     clustererOpenShow: false,
     currentMarkerId: Number,
+    currentMarkerName: Object,
     currentMarker: Object,
     selectedCategoryId: Number,
     messageBoxShow: false,
@@ -53,7 +53,7 @@ const store = new Vuex.Store({
     resetCurrentMarker(state, obj) {
       state.currentMarker = obj;
       state.currentMarkerId = obj.id;
-      console.log(state.currentMarkerId)
+      state.currentMarkerName = obj.name;
     },
     changeTag(state,tagId) {
       // 提交选择的tag的id，更改marker的tag

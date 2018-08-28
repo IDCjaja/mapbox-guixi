@@ -18,7 +18,7 @@ $orange-color: #f07235;
   width: 240px;
   background: #fff;
   .color-wrapper {
-    padding: 0 20px;
+    padding: 0 20px 15px 20px;
     border-bottom: $dashed;
     .color-title {
       text-align: left;
@@ -309,6 +309,9 @@ $orange-color: #f07235;
     padding: 10px 20px 0 20px;
     cursor: pointer;
     @include flex-space-between;
+    span {
+      @include text-overflow-show;
+    }
     img {
       width: 20px;
     }

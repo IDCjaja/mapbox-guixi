@@ -117,6 +117,7 @@ export default {
       map.setMaxBounds(bounds);
       map.on('click',() => {
         this.handleBlur();
+        this.filterShow = false;
         this.$store.dispatch('toggleCloseInformation')
       })
       this.markers = new L.MarkerClusterGroup({
@@ -150,7 +151,7 @@ export default {
         });
         marker.bindPopup(vm.$el);
         marker.on('click', function(e){
-          _this.$store.dispatch('toggleResetCurrentMarkerId',item.id);
+          _this.$store.dispatch('toggleResetCurrentMarker',item);
           _this.$store.commit('setSelectedCategoryId',item.categoryId);
           _this.$store.commit('setSelectedTagId', item.tagId);
           var markersInCluster  = []
@@ -171,7 +172,7 @@ export default {
             <popup style="width: 430px"></popup>
           `
         });
-        _this.$store.dispatch('toggleResetCurrentMarkerId',markersInCluster[0].options.id)
+        _this.$store.dispatch('toggleResetCurrentMarker',markersInCluster[0].options)
         _this.$store.commit('setSelectedCategoryId',markersInCluster[0].options.categoryId);
         _this.$store.commit('setSelectedTagId', markersInCluster[0].options.tagId);
         new L.popup()
@@ -201,7 +202,7 @@ export default {
     },
     listenToInformation() {
       this.informationShow = false
-    },
+    }
   }
 }
 </script>

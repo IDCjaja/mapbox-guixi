@@ -11,6 +11,7 @@
   bottom: 0;
   background: #fff;
   z-index: 999;
+  overflow: hidden;
   .search-navbar {
     background: #f8f7f7;
     padding: 8.5px 12px;
@@ -48,6 +49,8 @@
     }
   }
   .result-content{
+    height: 100%;
+    overflow: auto;
     .result-item {
       @include flex-center;
       span.el-icon-search {
