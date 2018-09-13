@@ -127,7 +127,6 @@ export default {
       this.markerList.forEach(item => {
         var category = this.existedCategories.find(catgy => item.categoryId === catgy.iconId );
         var tag = this.existedTags.find(t => item.tagId === t.id);
-        
         var marker = L.marker(new L.LatLng(item.latitude, item.longitude),{
           id: item.id,
           icon: L.mapbox.marker.icon({'marker-symbol': this.categorySvgMap[category.iconId-1], 'marker-color': tag.color}),
